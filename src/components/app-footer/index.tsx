@@ -48,7 +48,7 @@ export default memo(function AppFooter() {
             return (
               <li className="item" key={item.link}>
                 <a className="link" href={item.link} rel="noopener noreferrer" target="_blank"> </a>
-                {/* <span className="title">{item.title}</span> */}
+                <span className="title"></span>
               </li>
             )
           })

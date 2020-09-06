@@ -3,10 +3,10 @@ export type Link = {
   link: string
 }
 
-export const headerLinks:Array<Link> = [
+export const headerLinks: Array<Link> = [
   {
     title: "发现音乐",
-    link: "/"
+    link: "/discover"
   },
   {
     title: "我的音乐",
@@ -30,7 +30,7 @@ export const headerLinks:Array<Link> = [
   }
 ]
 
-export const footerLinks:Array<Link> = [
+export const footerLinks: Array<Link> = [
   {
     title: "服务条款",
     link: "https://st.music.163.com/official-terms/service"
@@ -53,17 +53,48 @@ export const footerLinks:Array<Link> = [
   }
 ]
 
-export const footerImages:Array<{link: string}> = [
+export const footerImages: Array<Link> = [
   {
-    link: "https://music.163.com/st/userbasic#/auth"
+    link: "https://music.163.com/st/userbasic#/auth",
+    title: "用户认证"
   },
   {
-    link: "https://music.163.com/recruit"
+    link: "https://music.163.com/recruit",
+    title: "独立音乐人"
   },
   {
-    link: "https://music.163.com/web/reward"
+    link: "https://music.163.com/web/reward",
+    title: "赞赏"
   },
   {
-    link: "https://music.163.com/uservideo#/plan"
+    link: "https://music.163.com/uservideo#/plan",
+    title: "视频奖励"
+  }
+]
+
+export const discoverMenu: Array<Link> = [
+  {
+    title: "推荐",
+    link: "/discover/recommend"
+  },
+  {
+    title: "排行榜",
+    link: "/discover/ranking"
+  },
+  {
+    title: "歌单",
+    link: "/discover/songs"
+  },
+  {
+    title: "主播电台",
+    link: "/discover/djradio"
+  },
+  {
+    title: "歌手",
+    link: "/discover/artist"
+  },
+  {
+    title: "新碟上架",
+    link: "/discover/album"
   }
 ]
