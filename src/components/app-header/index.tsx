@@ -3,6 +3,9 @@ import {NavLink} from 'react-router-dom'
 
 import {headerLinks, Link} from '@/common/local-data'
 
+import {Button} from 'antd'
+import {SearchOutlined} from '@/utils/antdIcon'
+
 import {
   HeadedWrapper,
   HeaderLeft,
@@ -42,7 +45,7 @@ export default memo(function AppHeader() {
           </div>
         </HeaderLeft>
         <HeaderRight>
-          right
+          <Button icon={<SearchOutlined/>} shape='round'>dadasda</Button>
         </HeaderRight>
       </div>
       <div className='divider'></div>
