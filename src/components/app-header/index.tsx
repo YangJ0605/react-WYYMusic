@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 
 import {headerLinks, Link} from '@/common/local-data'
 
-import {Button} from 'antd'
+import {Input} from 'antd'
 import {SearchOutlined} from '@/utils/antdIcon'
 
 import {
@@ -45,7 +45,9 @@ export default memo(function AppHeader() {
           </div>
         </HeaderLeft>
         <HeaderRight>
-          <Button icon={<SearchOutlined/>} shape='round'>dadasda</Button>
+          <Input prefix={<SearchOutlined/>} className='search' placeholder='音乐/视频/电台/用户'/>
+          <div className='center'>创作者中心</div>
+          <div>登录</div>
         </HeaderRight>
       </div>
       <div className='divider'></div>
