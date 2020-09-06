@@ -31,16 +31,16 @@ instance.interceptors.response.use(response => {
   return err
 })
 
-const request = (url: string, data = {}, method = 'get') => {
+const request = (url: string, method = 'get', data = {}) => {
   method = method.toLocaleLowerCase()
   return new Promise(resolve => {
     let promise: Promise<AxiosResponse<any>>
     if (method === 'get') {
-      promise = axios.get(url, {
+      promise = instance.get(url, {
         params: data
       })
     } else {
-      promise = axios.post(url, data)
+      promise = instance.post(url, data)
     }
     promise.then(res => {
       resolve(res)
