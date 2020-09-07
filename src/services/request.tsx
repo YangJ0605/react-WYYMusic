@@ -31,7 +31,7 @@ instance.interceptors.response.use(response => {
   return err
 })
 
-const request = (url: string, method = 'get', data = {}) => {
+const request = (url: string, method:string = 'get', data:{[propName:string]:any} = {}) => {
   method = method.toLocaleLowerCase()
   return new Promise(resolve => {
     let promise: Promise<AxiosResponse<any>>
