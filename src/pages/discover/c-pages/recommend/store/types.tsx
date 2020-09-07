@@ -10,4 +10,4 @@ interface ChangeTopBannersAction {
   topBanners: Array<any>,
 }
 
-export type ChangeActonTypes = ChangeTopBannersAction
+export type ActionTypes = ChangeTopBannersAction

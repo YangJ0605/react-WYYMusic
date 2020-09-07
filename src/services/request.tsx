@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios'
+import axios, { AxiosInstance } from 'axios'
 import { message } from 'antd'
 
 import { TIMEOUT, baseUrl } from './config'
@@ -31,10 +31,15 @@ instance.interceptors.response.use(response => {
   return err
 })
 
+interface IAxiosRes {
+  banners: any[],
+  test: any[]
+}
+
 const request = (url: string, method:string = 'get', data:{[propName:string]:any} = {}) => {
   method = method.toLocaleLowerCase()
-  return new Promise(resolve => {
-    let promise: Promise<AxiosResponse<any>>
+  return new Promise<IAxiosRes>(resolve => {
+    let promise: Promise<IAxiosRes>
     if (method === 'get') {
       promise = instance.get(url, {
         params: data
