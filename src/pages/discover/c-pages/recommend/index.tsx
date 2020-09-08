@@ -1,24 +1,13 @@
-import React, { memo, useEffect } from 'react'
-import {useDispatch, useSelector, shallowEqual, TypedUseSelectorHook} from 'react-redux'
-import {RootState} from '@/store/reducer'
-import {getTopBannerAction} from './store/actionCreators'
+import React, { memo} from 'react'
 
-const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
+import {RecommendWrapper} from './style'
+import TopBanner from './c-cpns/top-banner'
+
 export default memo(function Recommend() {
-  const {topBanners} = useTypedSelector(state => ({
-    topBanners: state.getIn(['recommend', 'topBanners'])
-  }), shallowEqual)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    // dispatch()
-    dispatch(getTopBannerAction())
-  }, [])
-  topBanners.forEach(item => {
-    console.log(item.imageUrl)
-  })
+
   return (
-    <div>
-      Recommend:{topBanners.length}
-    </div>
+    <RecommendWrapper>
+      <TopBanner/>
+    </RecommendWrapper>
   )
 })
