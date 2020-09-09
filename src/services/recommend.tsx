@@ -7,3 +7,7 @@ export const getTopbanners = () => {
 export const getHotRecommends = (limit:number) => {
     return request('/personalized', 'get', {limit})
 }
+
+export const getNewAlbums = (limit:number) => {
+    return request('/top/album', 'get', {limit})
+}

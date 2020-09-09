@@ -1,6 +1,9 @@
-import { CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND } from './constants'
+import { CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND, CHANGE_NEW_ALBUM } from './constants'
 
-export type TopBannersItem = { imageUrl: string, [propName: string]: any }
+export type TopBannersItem = {
+  imageUrl: string,
+  [propName: string]: any
+}
 
 export type HotRecommendsItem = {
   picUrl: string,
@@ -12,15 +15,20 @@ export type HotRecommendsItem = {
   name: string
 }
 
+export type NewAlbumsItem = {
+  [propName: string]: any
+}
+
 // state 类型
 export interface RecommendState {
   topBanners: Array<TopBannersItem>,
   hotRecommends: Array<HotRecommendsItem>,
+  newAlbums: Array<NewAlbumsItem>,
   [propName: string]: any
 }
 
 
-// action
+// action 类型
 interface ChangeTopBannersAction {
   type: typeof CHANGE_TOP_BANNERS,
   topBanners: Array<TopBannersItem>,
@@ -31,4 +39,10 @@ interface ChangeHotRecommendAction {
   hotRecommends: Array<HotRecommendsItem>
 }
 
-export type ActionTypes = ChangeTopBannersAction | ChangeHotRecommendAction
+interface ChangeNewAlbumsAction {
+  type: typeof CHANGE_NEW_ALBUM,
+  newAblums: Array<NewAlbumsItem>
+}
+
+export type ActionTypes = ChangeTopBannersAction | ChangeHotRecommendAction | ChangeNewAlbumsAction
+

@@ -1,8 +1,9 @@
-import {CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND} from './constants'
-import {ActionTypes, TopBannersItem, HotRecommendsItem} from './types'
-import {getTopbanners, getHotRecommends} from '@/services/recommend'
+import {CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND, CHANGE_NEW_ALBUM} from './constants'
+import {ActionTypes, TopBannersItem, HotRecommendsItem, NewAlbumsItem} from './types'
+import {getTopbanners, getHotRecommends, getNewAlbums} from '@/services/recommend'
 import {ThunkAction} from 'redux-thunk'
 import {State} from './reducer'
+
 
 type ThunkResult<R> = ThunkAction<R, State, undefined, ActionTypes>
 
@@ -21,6 +22,13 @@ export const changeHotRecommendAction = (recommends:HotRecommendsItem[]):ActionT
   }
 }
 
+export const changeNewAlbumsAction = (albums:NewAlbumsItem[]):ActionTypes => {
+  return {
+    type: CHANGE_NEW_ALBUM,
+    newAblums: albums
+  }
+}
+
 export const getTopBannerAction = ():ThunkResult<void> => {
     return dispatch => {
       getTopbanners().then(res => {
@@ -36,6 +44,14 @@ export const getHotRecommedAction = (limit:number):ThunkResult<void> => {
   return dispatch => {
     getHotRecommends(limit).then(res => {
       dispatch(changeHotRecommendAction(res.result))
+    })
+  }
+}
+
+export const getNewAlbumsAction = (limit:number):ThunkResult<void> => {
+  return dispatch => {
+    getNewAlbums(limit).then(res => {
+      dispatch(changeNewAlbumsAction(res.albums))
     })
   }
 }

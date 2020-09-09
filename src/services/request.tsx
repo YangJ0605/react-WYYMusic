@@ -34,6 +34,7 @@ instance.interceptors.response.use(response => {
 interface IAxiosRes {
   banners: any[],
   result: any[],
+  albums: any[],
   test: any[]
 }
 

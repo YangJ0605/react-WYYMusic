@@ -6,7 +6,7 @@ type IProps = {
 
 export const SongsCoverWrapper = styled.div<IProps>`
     width: 140px;
-    margin: 20px ${props => (props.right || 0)} 20px 0;
+    margin: 15px ${props => (props.right || 0)}px 15px 0;
     &:hover .cover-top{
         transform: scale(1.2);
     }

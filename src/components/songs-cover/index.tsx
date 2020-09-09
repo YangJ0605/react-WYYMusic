@@ -21,7 +21,7 @@ type IProps = {
 export default memo(function SonsCover(props: IProps) {
     const { info, showCreator } = props
     return (
-        <SongsCoverWrapper right='0'>
+        <SongsCoverWrapper right='5'>
             <div className='cover-top'>
                 <img src={getSizeImage(info.picUrl, 140)} alt={info.name} />
                 <div className='cover sprite_cover'>
