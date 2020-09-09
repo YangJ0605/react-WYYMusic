@@ -1,6 +1,6 @@
 import {CHANGE_TOP_BANNERS} from './constants'
 import {ActionTypes} from './types'
-import request from '@/services/request'
+import {getTopbanners} from '@/services/recommend'
 import {ThunkAction} from 'redux-thunk'
 import {State} from './reducer'
 
@@ -17,7 +17,7 @@ export const changeTopBannerAction = (banners:any[]):ActionTypes => {
 
 export const getTopBannerAction = ():ThunkResult<void> => {
     return dispatch => {
-      request('/banner').then(res => {
+      getTopbanners().then(res => {
         // dispatch(changeTopBannerAction(res));
         dispatch(changeTopBannerAction(res.banners))
         // console.log(res)

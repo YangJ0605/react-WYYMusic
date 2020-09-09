@@ -30,4 +30,15 @@ align-items: center;
     }
 }
 
+.right {
+    display: flex;
+    align-items: center;
+    .icon {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-left: 4px;
+        background-position: 0 -240px;
+    }
+}
 `
