@@ -1,5 +1,5 @@
 const path = require('path')
-const CracoAlias = require('craco-alias')
+// const CracoAlias = require('craco-alias')
 const CracoLessPlugin = require('craco-less');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')

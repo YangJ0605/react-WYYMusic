@@ -39,9 +39,18 @@ export const BannerRight = styled.a.attrs({
   href: "https://music.163.com/#/download",
   target: "_blank"
 })`
+  display: inline-block;
   width: 254px;
   height: 270px;
   background: url(${require("@/assets/img/download.png")});
+  position: relative;
+  .tips {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+  }
 `
 
 export const BannerControl = styled.div`

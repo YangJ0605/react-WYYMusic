@@ -46,7 +46,11 @@ export default memo(function TopBanner() {
             })}
           </Carousel>
         </BannerLeft>
-        <BannerRight></BannerRight>
+        <BannerRight>
+          <div className='tips text-nowrap'>
+          PC 安卓 iPhone WP iPad Mac 六大客户端
+          </div>
+        </BannerRight>
         <BannerControl>
           <button className='btn left' onClick={e => carouselRef.current?.prev()}></button>
           <button className='btn right' onClick={e => carouselRef.current?.next()}></button>

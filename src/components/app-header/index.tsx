@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom'
 import {headerLinks, Link} from '@/common/local-data'
 
 import {Input} from 'antd'
-import {SearchOutlined} from '@/utils/antdIcon'
+import {SearchOutlined}from '@/utils/antdIcon'
 
 import {
   HeadedWrapper,
