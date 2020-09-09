@@ -1,6 +1,6 @@
 import {Map} from 'immutable'
 
-import {CHANGE_TOP_BANNERS} from './constants'
+import {CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND} from './constants'
 import {RecommendState, ActionTypes} from './types'
 
 
@@ -10,13 +10,16 @@ export interface StateMap<T> extends Map<string, any> {
 export type State = StateMap<RecommendState>
 
 const initialState:State = Map({
-  topBanners: []
+  topBanners: [],
+  hotRecommends: []
 })
 
 const reducer = (state = initialState, action: ActionTypes):State => {
   switch(action.type) {
     case CHANGE_TOP_BANNERS:
       return state.set('topBanners', action.topBanners)
+    case CHANGE_HOT_RECOMMEND:
+      return state.set('hotRecommends', action.hotRecommends)
     default:
       return state
   }
