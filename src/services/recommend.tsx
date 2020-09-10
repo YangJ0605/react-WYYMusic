@@ -11,3 +11,7 @@ export const getHotRecommends = (limit:number) => {
 export const getNewAlbums = (limit:number) => {
     return request('/top/album', 'get', {limit})
 }
+
+export const getRankingList = (idx:number) => {
+    return request('/top/list', 'get', {idx})
+}

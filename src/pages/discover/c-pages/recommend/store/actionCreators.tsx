@@ -1,6 +1,6 @@
-import {CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND, CHANGE_NEW_ALBUM} from './constants'
-import {ActionTypes, TopBannersItem, HotRecommendsItem, NewAlbumsItem} from './types'
-import {getTopbanners, getHotRecommends, getNewAlbums} from '@/services/recommend'
+import {CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND, CHANGE_NEW_ALBUM, CHANGE_RANKINGS} from './constants'
+import {ActionTypes, TopBannersItem, HotRecommendsItem, NewAlbumsItem, Rankings} from './types'
+import {getTopbanners, getHotRecommends, getNewAlbums, getRankingList} from '@/services/recommend'
 import {ThunkAction} from 'redux-thunk'
 import {State} from './reducer'
 
@@ -29,6 +29,27 @@ export const changeNewAlbumsAction = (albums:NewAlbumsItem[]):ActionTypes => {
   }
 }
 
+export const changeRankingAction = (rankings:Rankings):ActionTypes => {
+  return {
+    type: CHANGE_RANKINGS,
+    rankings
+  }
+}
+
+// export const changeNewRankingAction = (newRanking:NewRankingItem[]):ActionTypes => {
+//   return {
+//     type: CHANGE_NEW_RANKING,
+//     newRanking
+//   }
+// }
+
+// export const changeOriginRankingAction = (originRanking:OriginRankingItem[]):ActionTypes => {
+//   return {
+//     type: CHANGE_ORIGIN_RANKING,
+//     originRanking
+//   }
+// }
+
 export const getTopBannerAction = ():ThunkResult<void> => {
     return dispatch => {
       getTopbanners().then(res => {
@@ -52,6 +73,32 @@ export const getNewAlbumsAction = (limit:number):ThunkResult<void> => {
   return dispatch => {
     getNewAlbums(limit).then(res => {
       dispatch(changeNewAlbumsAction(res.albums))
+    })
+  }
+}
+
+export const getRankingListAction = (): ThunkResult<void> => {
+  return dispatch => {
+    const promises = [getRankingList(0), getRankingList(2), getRankingList(3)]
+    Promise.all(promises).then(res => {
+      // console.log(res.length)
+      // switch(idx) {
+      //   case 0:
+      //     dispatch(changeUpRankingAction(res.playlist.tracks))
+      //     break
+      //   case 2:
+      //     dispatch(changeNewRankingAction(res.playlist.tracks))
+      //     break
+      //   case 3:
+      //     dispatch(changeOriginRankingAction(res.playlist.tracks))
+      // }
+      // dispatch(changeRankingAction(res))
+      const obj:Rankings = {
+        0: res[0].playlist.tracks,
+        2: res[1].playlist.tracks,
+        3: res[2].playlist.tracks
+      }
+      dispatch(changeRankingAction(obj))
     })
   }
 }

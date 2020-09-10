@@ -1,10 +1,9 @@
-import { CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND, CHANGE_NEW_ALBUM } from './constants'
+import { CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND, CHANGE_NEW_ALBUM, CHANGE_RANKINGS } from './constants'
 
 export type TopBannersItem = {
   imageUrl: string,
   [propName: string]: any
 }
-
 export type HotRecommendsItem = {
   picUrl: string,
   playCount: number,
@@ -14,18 +13,32 @@ export type HotRecommendsItem = {
   },
   name: string
 }
-
 export type NewAlbumsItem = {
   picUrl: string,
   name: string,
   [propName:string]: any
 }
 
+export type UpRankingItem = {
+  [propName:string]: any
+}
+export type NewRankingItem = {
+  [propName:string]: any
+}
+export type OriginRankingItem = {
+  [propName:string]: any
+}
+export type Rankings = {
+  0: Array<UpRankingItem>,
+  2: Array<NewRankingItem>,
+  3: Array<OriginRankingItem>
+}
 // state 类型
 export interface RecommendState {
   topBanners: Array<TopBannersItem>,
   hotRecommends: Array<HotRecommendsItem>,
   newAlbums: Array<NewAlbumsItem>,
+  rankings: Rankings,
   [propName: string]: any
 }
 
@@ -46,5 +59,19 @@ interface ChangeNewAlbumsAction {
   newAblums: Array<NewAlbumsItem>
 }
 
-export type ActionTypes = ChangeTopBannersAction | ChangeHotRecommendAction | ChangeNewAlbumsAction
+interface ChangeRankingAction {
+  type: typeof CHANGE_RANKINGS,
+  rankings: Rankings
+}
+
+// interface ChangeNewRankingAction {
+//   type: typeof CHANGE_NEW_RANKING,
+//   newRanking: Array<NewRankingItem>
+// }
+
+// interface ChangeOriginRankingAction {
+//   type: typeof CHANGE_ORIGIN_RANKING,
+//   originRanking: Array<OriginRankingItem>,
+// }
+export type ActionTypes = ChangeTopBannersAction | ChangeHotRecommendAction | ChangeNewAlbumsAction | ChangeRankingAction
 

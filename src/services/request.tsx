@@ -35,6 +35,9 @@ interface IAxiosRes {
   banners: any[],
   result: any[],
   albums: any[],
+  playlist: {
+    tracks: any[]
+  },
   test: any[]
 }
 
