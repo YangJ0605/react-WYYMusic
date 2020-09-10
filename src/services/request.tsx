@@ -36,7 +36,10 @@ interface IAxiosRes {
   result: any[],
   albums: any[],
   playlist: {
+    coverImgUrl: string
     tracks: any[]
+    name: string
+    [propName:string]: any
   },
   test: any[]
 }

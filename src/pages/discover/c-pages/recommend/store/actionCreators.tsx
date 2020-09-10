@@ -94,9 +94,9 @@ export const getRankingListAction = (): ThunkResult<void> => {
       // }
       // dispatch(changeRankingAction(res))
       const obj:Rankings = {
-        0: res[0].playlist.tracks,
-        2: res[1].playlist.tracks,
-        3: res[2].playlist.tracks
+        upRanking: res[0].playlist,
+        newRanking: res[1].playlist,
+        originRanking: res[2].playlist
       }
       dispatch(changeRankingAction(obj))
     })

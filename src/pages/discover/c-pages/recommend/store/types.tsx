@@ -28,10 +28,15 @@ export type NewRankingItem = {
 export type OriginRankingItem = {
   [propName:string]: any
 }
+type RankingItem<T> = {
+  coverImgUrl: string
+  tracks: Array<T>
+  name: string
+}
 export type Rankings = {
-  0: Array<UpRankingItem>,
-  2: Array<NewRankingItem>,
-  3: Array<OriginRankingItem>
+  upRanking: RankingItem<UpRankingItem>,
+  newRanking: RankingItem<NewRankingItem>,
+  originRanking: RankingItem<OriginRankingItem>
 }
 // state 类型
 export interface RecommendState {

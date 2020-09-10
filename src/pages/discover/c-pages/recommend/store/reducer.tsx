@@ -14,9 +14,9 @@ const initialState:State = Map({
   hotRecommends: [],
   newAlbums: [],
   rankings: {
-    0: [],
-    2: [],
-    3: []
+    upRanking: {},
+    newRanking: {},
+    originRanking: {}
   }
 })
 
