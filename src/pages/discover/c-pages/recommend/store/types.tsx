@@ -16,7 +16,9 @@ export type HotRecommendsItem = {
 }
 
 export type NewAlbumsItem = {
-  [propName: string]: any
+  picUrl: string,
+  name: string,
+  [propName:string]: any
 }
 
 // state 类型
