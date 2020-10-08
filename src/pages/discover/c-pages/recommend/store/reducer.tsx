@@ -3,7 +3,7 @@ import {Map} from 'immutable'
 import {CHANGE_TOP_BANNERS, CHANGE_HOT_RECOMMEND, CHANGE_NEW_ALBUM, CHANGE_RANKINGS} from './constants'
 import {RecommendState, ActionTypes} from './types'
 
-
+ 
 export interface StateMap<T> extends Map<string, any> {
   get<K extends keyof T>(key: K): T[K]
 }

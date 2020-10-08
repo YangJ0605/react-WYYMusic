@@ -1,6 +1,8 @@
 import React, { memo } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { getSizeImage } from '@/utils/format'
+import {getDetailSongAction} from '@/pages/player/store/actionCreator'
 
 import { RankingItemWrapper } from './style'
 
@@ -14,8 +16,16 @@ type IProps = {
     info: Info
 }
 export default memo(function RankingItem(props: IProps) {
-    const { info } = props
+    const { info = {
+      coverImgUrl: '',
+      name: '',
+      tracks: []
+    } } = props
     const {tracks = []} = info
+    const dispatch = useDispatch()
+    const handlePlayMusic = (item:any) => {
+      dispatch(getDetailSongAction(item.id as number))
+    }
     return (
         <RankingItemWrapper>
             <div className='header'>
@@ -40,7 +50,7 @@ export default memo(function RankingItem(props: IProps) {
                 <div className="info">
                   <span className="name text-nowrap">{item.name}</span>
                   <div className="operate">
-                    <button className="btn sprite_02 play"></button>
+                    <button className="btn sprite_02 play"  onClick={_ => handlePlayMusic(item)}></button>
                     <button className="btn sprite_icon2 addto"></button>
                     <button className="btn sprite_02 favor"></button>
                   </div>

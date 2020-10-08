@@ -119,3 +119,19 @@ body, textarea, select, input, button {
   background-color: rgba(0, 0, 0, .5);
   color: #fff;
 }
+
+.volume-wrapper {
+  position: absolute;
+  bottom: 9px;
+  left: 0px;
+  clear: both;
+  width: 32px;
+  height: 113px;
+  background-color: rgba(0,0,0, .8);
+  padding-bottom: 18px;
+  padding-top: 5px;
+  box-sizing:border-box;
+}
+.ant-popover-arrow {
+  display: none;
+}

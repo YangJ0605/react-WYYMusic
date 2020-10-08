@@ -23,6 +23,7 @@
     "compression-webpack-plugin": "^5.0.2",
     "craco-alias": "^2.1.1",
     "craco-less": "^1.17.0",
+    "dayjs": "^1.9.1",
     "immutable": "^4.0.0-rc.12",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",

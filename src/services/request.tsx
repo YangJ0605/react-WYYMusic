@@ -30,7 +30,13 @@ instance.interceptors.response.use(response => {
   }
   return err
 })
-
+type SongItem = {
+  name: string
+  dt: number
+  al: any
+  ar: any
+  id: number
+}
 interface IAxiosRes {
   banners: any[],
   result: any[],
@@ -41,8 +47,13 @@ interface IAxiosRes {
     name: string
     [propName:string]: any
   },
+  songs: SongItem[],
+  lrc: {
+    lyric: string
+  }
   test: any[]
 }
+
 
 const request = (url: string, method:string = 'get', data:{[propName:string]:any} = {}) => {
   method = method.toLocaleLowerCase()
