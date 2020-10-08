@@ -7,7 +7,7 @@ import {reducer as playerReducer} from '@/pages/player/store'
 
 // import {StateMap} from '@/pages/discover/c-pages/recommend/store/reducer'
 import {TopBannersItem, HotRecommendsItem, NewAlbumsItem, Rankings} from '@/pages/discover/c-pages/recommend/store/types'
-import {CurrentSong, Sequence} from '@/pages/player/store/types'
+import {CurrentSong, Sequence, LyricList} from '@/pages/player/store/types'
 
 const reducer = combineReducers({
   recommend: recommendReducer,
@@ -24,7 +24,7 @@ type CurrentSongKey = ['player', 'currentSong']
 type PlayListKey = ['player', 'playList']
 type CurrentSongIndexKey = ['player', 'currentSongIndex'] 
 type SequenceKey = ['player', 'sequence']
-
+type LyricListKey = ['player', 'lyricList']
 
 export interface RootState extends Map<string, any> {
   getIn<K extends TopKey>(key: K): TopBannersItem[]
@@ -35,6 +35,7 @@ export interface RootState extends Map<string, any> {
   getIn<K extends PlayListKey>(key:K):CurrentSong[]
   getIn<K extends CurrentSongIndexKey>(key:K): number
   getIn<K extends SequenceKey>(key:K): Sequence
+  getIn<K extends LyricListKey>(key:K):LyricList
 }
 
 export default reducer
