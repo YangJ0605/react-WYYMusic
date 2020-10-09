@@ -25,6 +25,8 @@ type PlayListKey = ['player', 'playList']
 type CurrentSongIndexKey = ['player', 'currentSongIndex'] 
 type SequenceKey = ['player', 'sequence']
 type LyricListKey = ['player', 'lyricList']
+type CurrentLyricIndexKey = ['player', 'currentLyricIndex']
+
 
 export interface RootState extends Map<string, any> {
   getIn<K extends TopKey>(key: K): TopBannersItem[]
@@ -36,6 +38,7 @@ export interface RootState extends Map<string, any> {
   getIn<K extends CurrentSongIndexKey>(key:K): number
   getIn<K extends SequenceKey>(key:K): Sequence
   getIn<K extends LyricListKey>(key:K):LyricList
+  getIn<K extends CurrentLyricIndexKey>(key:K):number
 }
 
 export default reducer

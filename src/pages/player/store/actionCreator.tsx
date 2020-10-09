@@ -38,6 +38,11 @@ const changeLyricListAction = (lyricList:LyricList):ActionTypes => ({
     lyricList
 })
 
+export const changeCurrentLyricIndexAction = (index:number):ActionTypes => ({
+    type: actionTypes.CHANGE_CURRENT_LYRIC_INDEX,
+    index
+})
+
 export const changeMusicAction = (tag: 1 | -1):ThunkResult<void> => {
     return (dispatch, getState) => {
         const playList = getState().getIn(['player', 'playList']) as PlayList
@@ -94,6 +99,8 @@ export const getDetailSongAction = (ids:number):ThunkResult<void> => {
         }
     }
 }
+
+
 
 export const getLyricAction = (id:number):ThunkResult<void> => {
     return dispatch => {

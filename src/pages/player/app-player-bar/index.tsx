@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom'
 
 import { getSizeImage, getPlaySong } from '@/utils/format'
 
-import { getDetailSongAction, changeSequenceAction, changeMusicAction } from '../store/actionCreator'
+import { getDetailSongAction, changeSequenceAction, changeMusicAction, changeCurrentLyricIndexAction } from '../store/actionCreator'
 import { RootState } from '@/store/reducer'
 
-import { Slider, Popover } from 'antd'
+import { Slider, Popover, message } from 'antd'
 import { PlaybarWrapper, Control, PlayInfo, Operator } from './style'
 
 const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
@@ -23,10 +23,11 @@ export default memo(function AppPlayerVar() {
     const [isVolumShow, setIsVolumShow] = useState<boolean>(false)
     const [volum, setVolum] = useState<number>(100)
 
-    const { currentSong, sequence, lyricList } = useTypedSelector(state => ({
+    const { currentSong, sequence, lyricList, currentLyricIndex } = useTypedSelector(state => ({
         currentSong: state.getIn(['player', 'currentSong']),
         sequence: state.getIn(['player', 'sequence']),
-        lyricList: state.getIn(['player', 'lyricList'])
+        lyricList: state.getIn(['player', 'lyricList']),
+        currentLyricIndex: state.getIn(['player', 'currentLyricIndex'])
     }))
     useEffect(() => {
         dispatch(getDetailSongAction(1398663411))
@@ -42,7 +43,6 @@ export default memo(function AppPlayerVar() {
         if (isPlaying) {
             audioRef.current!.play()
         }
-        console.log(lyricList)
         // eslint-disable-next-line
     }, [currentSong])
 
@@ -60,11 +60,36 @@ export default memo(function AppPlayerVar() {
 
     const handleAudioTimeUpdate = useCallback((e) => {
         const currentTime = e.target.currentTime
+        // console.log('currentTime', currentTime)
         if (!isChanging) {
             setCurrentTime(currentTime * 1000)
             setProgress(currentTime * 1000 / currentSong.dt * 100)
         }
-    }, [currentSong, isChanging])
+        let i = 0
+        // console.log('i', currentLyricIndex)
+        // console.log('lyricList', lyricList)
+        // console.log('lyricList[i]', lyricList[i])
+        for (; i < lyricList.length; i++) {
+            if (currentTime * 1000 < lyricList[i].time) {
+                break
+            }
+        }
+        if (currentLyricIndex !== i - 1) {
+            if (i - 1 < 0) i = 1
+            dispatch(changeCurrentLyricIndexAction(i - 1))
+            const content = lyricList[i - 1] && lyricList[i - 1].content
+            if (content && currentTime) {
+                message.open({
+                    content: content,
+                    duration: 0,
+                    icon: <div></div>,
+                    type: 'success',
+                    key: 'lyric',
+                    className: "lyric-class"
+                })
+            }
+        }
+    }, [currentSong, isChanging, lyricList, dispatch, currentLyricIndex])
 
     const handleSliderChange = useCallback((value: number) => {
         setIsChanging(true)
@@ -96,6 +121,7 @@ export default memo(function AppPlayerVar() {
         dispatch(changeMusicAction(tag))
     }, [dispatch])
     const handleAudioEnded = useCallback(() => {
+        // dispatch(changeCurrentLyricIndexAction(0))
         if (sequence === 2) {
             audioRef.current!.currentTime = 0
             audioRef.current!.play()
@@ -162,7 +188,7 @@ export default memo(function AppPlayerVar() {
                                 value={volum}
                             />
                         </div>}>
-                        <button className="sprite_player btn volume" onClick={handleVolumClick}></button>
+                            <button className="sprite_player btn volume" onClick={handleVolumClick}></button>
                         </Popover>
                         <button className="sprite_player btn loop" onClick={handleSequence}></button>
                         <button className="sprite_player btn playlist"></button>

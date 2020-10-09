@@ -16,7 +16,8 @@ const initialState:State = Map({
     playList: playList,
     currentSongIndex: 0,
     sequence: 0,
-    lyricList: []
+    lyricList: [],
+    currentLyricIndex: 0
 })
 
 const reducer = (state = initialState, action:ActionTypes) => {
@@ -31,6 +32,8 @@ const reducer = (state = initialState, action:ActionTypes) => {
             return state.set('sequence', action.sequence)
         case actionTypes.CHANGE_LYRIC_LIST:
             return state.set('lyricList', action.lyricList)
+        case actionTypes.CHANGE_CURRENT_LYRIC_INDEX:
+            return state.set('currentLyricIndex', action.index)
         default:
             return state
     }

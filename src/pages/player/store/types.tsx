@@ -43,4 +43,9 @@ export type ChangeLyricListAction = {
     lyricList: LyricList
 }
 
-export type ActionTypes = ChangeCurrentSongAction | ChangePlayListAction | ChangeCurrentSongIndexAction | ChangeSequenceAction | ChangeLyricListAction
+export type ChangeCurrentLyricIndexAction = {
+    type: typeof actionTypes.CHANGE_CURRENT_LYRIC_INDEX,
+    index:number
+}
+
+export type ActionTypes = ChangeCurrentSongAction | ChangePlayListAction | ChangeCurrentSongIndexAction | ChangeSequenceAction | ChangeLyricListAction | ChangeCurrentLyricIndexAction

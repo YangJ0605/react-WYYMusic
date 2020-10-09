@@ -32,7 +32,7 @@ const parseContent = (content: string) => {
 
 
 const parseLyric = (lyricStirng: string) => {
-    console.log(lyricStirng)
+    // console.log(lyricStirng)
     const lineList = lyricStirng.split('\n')
     const lyricList: Line[] = []
     for (let line of lineList) {
@@ -44,7 +44,7 @@ const parseLyric = (lyricStirng: string) => {
         // })
         lyricList.push(...parseContent(line))
     }
-    console.log(lyricList.sort((a,b) => a.time - b.time).filter(item => !!item.content))
+    // console.log(lyricList.sort((a,b) => a.time - b.time).filter(item => !!item.content))
     return lyricList.sort((a,b) => a.time - b.time).filter(item => !!item.content)
 }
 
