@@ -23,9 +23,10 @@ export default memo(function AppPlayerVar() {
     const [isVolumShow, setIsVolumShow] = useState<boolean>(false)
     const [volum, setVolum] = useState<number>(100)
 
-    const { currentSong, sequence } = useTypedSelector(state => ({
+    const { currentSong, sequence, lyricList } = useTypedSelector(state => ({
         currentSong: state.getIn(['player', 'currentSong']),
-        sequence: state.getIn(['player', 'sequence'])
+        sequence: state.getIn(['player', 'sequence']),
+        lyricList: state.getIn(['player', 'lyricList'])
     }))
     useEffect(() => {
         dispatch(getDetailSongAction(1398663411))
@@ -41,6 +42,7 @@ export default memo(function AppPlayerVar() {
         if (isPlaying) {
             audioRef.current!.play()
         }
+        console.log(lyricList)
         // eslint-disable-next-line
     }, [currentSong])
 

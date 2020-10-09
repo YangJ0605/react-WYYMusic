@@ -10,7 +10,9 @@ const resolve = dir => path.resolve(__dirname, dir)
 module.exports = {
   webpack: {
     plugins: [
-      new BundleAnalyzerPlugin(),
+      new BundleAnalyzerPlugin({
+        analyzerPort: 9999
+      }),
       new CompressionWebpackPlugin({
         filename: '[path].gz[query]',
         algorithm: 'gzip',
